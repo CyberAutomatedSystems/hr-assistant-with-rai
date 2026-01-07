@@ -1,0 +1,180 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "description": "Deploys Azure OpenAI, AI Search, and Content Safety for HR Assistant WITH RAI demo"
+  },
+  "parameters": {
+    "resourceBaseName": {
+      "type": "string",
+      "metadata": {
+        "description": "Base name for all resources (will append service type)"
+      },
+      "defaultValue": "[concat('hr-rai-', uniqueString(resourceGroup().id))]"
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Location for all resources"
+      },
+      "defaultValue": "[resourceGroup().location]",
+      "allowedValues": [
+        "eastus",
+        "eastus2",
+        "westus",
+        "westus2",
+        "westeurope",
+        "northeurope",
+        "southcentralus"
+      ]
+    },
+    "openAIModelName": {
+      "type": "string",
+      "metadata": {
+        "description": "OpenAI model to deploy"
+      },
+      "defaultValue": "gpt-4o",
+      "allowedValues": [
+        "gpt-4o",
+        "gpt-4o-mini"
+      ]
+    },
+    "openAIModelCapacity": {
+      "type": "int",
+      "metadata": {
+        "description": "Model capacity (TPM in thousands)"
+      },
+      "defaultValue": 10,
+      "minValue": 1,
+      "maxValue": 100
+    },
+    "searchServiceSku": {
+      "type": "string",
+      "metadata": {
+        "description": "AI Search service tier"
+      },
+      "defaultValue": "basic",
+      "allowedValues": [
+        "free",
+        "basic",
+        "standard"
+      ]
+    },
+    "contentSafetySku": {
+      "type": "string",
+      "metadata": {
+        "description": "Content Safety tier"
+      },
+      "defaultValue": "F0",
+      "allowedValues": [
+        "F0",
+        "S0"
+      ]
+    }
+  },
+  "variables": {
+    "openAIName": "[concat('openai-', parameters('resourceBaseName'))]",
+    "searchName": "[concat('search-', parameters('resourceBaseName'))]",
+    "contentSafetyName": "[concat('safety-', parameters('resourceBaseName'))]",
+    "searchIndexName": "hr-policies"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2024-04-01-preview",
+      "name": "[variables('openAIName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "S0"
+      },
+      "kind": "OpenAI",
+      "properties": {
+        "customSubDomainName": "[variables('openAIName')]",
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts/deployments",
+      "apiVersion": "2024-04-01-preview",
+      "name": "[concat(variables('openAIName'), '/gpt-4o')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.CognitiveServices/accounts', variables('openAIName'))]"
+      ],
+      "sku": {
+        "name": "Standard",
+        "capacity": "[parameters('openAIModelCapacity')]"
+      },
+      "properties": {
+        "model": {
+          "format": "OpenAI",
+          "name": "[parameters('openAIModelName')]",
+          "version": "2024-08-06"
+        },
+        "raiPolicyName": "Microsoft.DefaultV2"
+      }
+    },
+    {
+      "type": "Microsoft.Search/searchServices",
+      "apiVersion": "2024-03-01-preview",
+      "name": "[variables('searchName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('searchServiceSku')]"
+      },
+      "properties": {
+        "replicaCount": 1,
+        "partitionCount": 1,
+        "hostingMode": "default",
+        "publicNetworkAccess": "enabled"
+      }
+    },
+    {
+      "type": "Microsoft.CognitiveServices/accounts",
+      "apiVersion": "2024-04-01-preview",
+      "name": "[variables('contentSafetyName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('contentSafetySku')]"
+      },
+      "kind": "ContentSafety",
+      "properties": {
+        "customSubDomainName": "[variables('contentSafetyName')]",
+        "publicNetworkAccess": "Enabled"
+      }
+    }
+  ],
+  "outputs": {
+    "openAIEndpoint": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', variables('openAIName')), '2024-04-01-preview').endpoint]"
+    },
+    "openAIName": {
+      "type": "string",
+      "value": "[variables('openAIName')]"
+    },
+    "searchEndpoint": {
+      "type": "string",
+      "value": "[concat('https://', variables('searchName'), '.search.windows.net')]"
+    },
+    "searchName": {
+      "type": "string",
+      "value": "[variables('searchName')]"
+    },
+    "searchIndexName": {
+      "type": "string",
+      "value": "[variables('searchIndexName')]"
+    },
+    "contentSafetyEndpoint": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.CognitiveServices/accounts', variables('contentSafetyName')), '2024-04-01-preview').endpoint]"
+    },
+    "contentSafetyName": {
+      "type": "string",
+      "value": "[variables('contentSafetyName')]"
+    },
+    "nextSteps": {
+      "type": "string",
+      "value": "1. Get API keys from Portal for each service. 2. Create search index and upload sample-policies.json. 3. Set environment variables. 4. Run python hr_assistant.py"
+    }
+  }
+}

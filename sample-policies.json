@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "policy_name": "Parental Leave and Family Support",
+    "category": "Leave",
+    "content": "TechCorp is committed to supporting all employees during significant family transitions. All new parents (birth, adoption, surrogacy, foster) receive 16 weeks of fully paid parental leave. Leave may be taken continuously or intermittently within the first year. No distinction is made between primary and secondary caregivers - all parents receive the same 16-week benefit regardless of gender or family structure. Additional benefits include: gradual return-to-work program (optional 4-week transition at 50% time), backup childcare services for first year, lactation support rooms at all locations, and flexible scheduling options upon return. Eligibility: Available to all full-time employees after 90 days of employment. Part-time employees receive prorated benefits."
+  },
+  {
+    "id": "2",
+    "policy_name": "Flexible Work Arrangements",
+    "category": "Remote Work",
+    "content": "TechCorp supports flexible work arrangements that balance business needs with employee wellbeing. Options include: Hybrid (2-3 days in office, remainder remote - most common), Fully Remote (available for approved roles and locations), and In-Office (required for facilities, lab, and some collaborative roles). Eligibility requires at least 6 months employment, performance rating of meets expectations or higher, role suitable for remote work, and residence in approved locations. Company provides laptop, necessary equipment, $500 annual home office stipend, and up to $50/month internet reimbursement. Requirements: maintain designated workspace, available during core hours (10am-3pm local time), respond to communications within established SLAs, and attend required in-person meetings."
+  },
+  {
+    "id": "3",
+    "policy_name": "Paid Time Off",
+    "category": "Time Off",
+    "content": "PTO accrual based on tenure: Years 0-3 receive 20 days per year (1.67 days/month), Years 4-7 receive 25 days per year (2.08 days/month), Years 8+ receive 30 days per year (2.5 days/month). Company observes 11 paid holidays: New Year's Day, MLK Jr. Day, Presidents' Day, Memorial Day, Juneteenth, Independence Day, Labor Day, Thanksgiving (2 days), Christmas Eve, and Christmas Day. Winter break: Company closes December 24-January 1 annually (paid, not counted against PTO). Sick leave is separate from PTO - unlimited sick days with reasonable use policy for employee illness, medical appointments, or family care. Doctor's note required for absences over 3 consecutive days. PTO usage requires manager approval in advance, minimum 2 weeks notice for time off exceeding 5 days. Maximum carryover: 10 days to next year."
+  },
+  {
+    "id": "4",
+    "policy_name": "Learning and Development",
+    "category": "Professional Development",
+    "content": "All employees receive $2,000 per year for approved training, certifications, and conferences. Technical roles receive an additional $1,000. Managers receive an additional $1,500 for leadership development. Eligible expenses include: industry conferences and workshops, professional certifications and exam fees, online courses and training programs, books and learning materials, and professional association memberships. Process: Submit request via HR portal with justification, manager approval required, must be relevant to current role or career development at TechCorp. Reimbursement within 30 days with receipts. Certification bonus: $500 bonus for achieving approved industry certifications, plus 5 days paid study leave for major certifications (AWS, Azure, PMP). Tuition reimbursement: Up to $10,000 per year for degree programs related to career at TechCorp, requires 2-year service commitment after completion, grade B or higher required for reimbursement."
+  },
+  {
+    "id": "5",
+    "policy_name": "Health and Wellness Benefits",
+    "category": "Benefits",
+    "content": "Medical insurance: 3 plan options (HMO, PPO, High-Deductible with HSA). Company covers 85% of premiums for employees, 75% for dependents. Coverage begins first day of employment. Dental and vision: Comprehensive dental coverage (2 cleanings/year, major procedures covered), vision coverage (annual exam, $200 frame allowance). Company covers 100% of premiums. Mental health support: Employee Assistance Program (EAP) provides 8 free counseling sessions per issue. Mental health visits covered same as physical health. Mindfulness and meditation app subscriptions provided. Wellness programs: On-site fitness centers at major locations, gym membership reimbursement up to $50/month, annual wellness screening and flu shots (free), wellness challenges with prizes, standing desk stipend of $300. Additional benefits: Life insurance at 2x annual salary (company-paid), short-term disability at 100% salary for 13 weeks, long-term disability at 60% salary, 401(k) match at 100% up to 6% of salary."
+  },
+  {
+    "id": "6",
+    "policy_name": "Code of Conduct and Ethics",
+    "category": "Conduct",
+    "content": "TechCorp employees are expected to demonstrate: Integrity (honest and ethical in all business dealings), Respect (treat all colleagues, customers, and partners with dignity), Accountability (take responsibility for actions and decisions), Excellence (strive for quality in all work), and Innovation (embrace creativity and continuous improvement). Prohibited conduct includes: discrimination or harassment based on protected characteristics, workplace violence or threats, theft or misuse of company property, conflicts of interest without disclosure, misrepresentation or fraud, violation of confidentiality agreements, and substance abuse at work. Reporting violations: Report concerns to manager, HR, or ethics hotline. Anonymous reporting available. Non-retaliation policy protects whistleblowers. All reports investigated promptly and confidentially. Consequences: Violations may result in corrective action up to termination. Illegal conduct reported to authorities. Due process provided for all investigations. Social media guidelines: Personal social media accounts are yours, don't represent personal opinions as company positions, don't share confidential company information, be respectful when mentioning TechCorp, use good judgment and common sense."
+  }
+]
